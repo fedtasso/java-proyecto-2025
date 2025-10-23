@@ -13,4 +13,5 @@ src/
 ├── Main.java           # Lógica principal y flujo de la aplicación  
 ├── Product.java        # Modelo de datos del producto  
 ├── Validations.java    # Sistema completo de validaciones  
+├── ProductService.java # Servicios para el CRUD    
 └── Utilities.java      # Utilidades y helpers reutilizables  
