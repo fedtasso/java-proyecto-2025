@@ -1,7 +1,3 @@
-# ⚠️ CRUD Pendiente de Completar.
-
-**Fecha estimada de finalización: 24/10/25**
-
 # Descripción del Proyecto
 
 Este proyecto consiste en la refactorización de un sistema de gestión de productos trabajado en el
