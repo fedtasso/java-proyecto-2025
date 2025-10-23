@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -26,12 +25,12 @@ public class Validations {
   }
 
   // 2. Validación para precios (números positivos)
-  public static double validatePrice(Scanner input, String message) {
+  public static double validatePrice(Scanner input) {
     while (true) {
       try {
-        System.out.print(message);
-        double price = input.nextDouble();
-        input.nextLine();
+        System.out.print("Ingrese el precio del nuevo producto: ");
+        String inputText = input.nextLine().replace(",", ".");
+        double price = Double.parseDouble(inputText);
 
         if (price > 0) {
           return price;
@@ -47,38 +46,14 @@ public class Validations {
   }
 
   // 3. Validación para texto no vacío
-  public static String validateNonEmptyText(Scanner input, String message) {
+  public static String validateText(Scanner input) {
     while (true) {
-      System.out.print(message);
+      System.out.print("Ingrese el nombre del nuevo producto: ");
       String text = input.nextLine().trim();
-
       if (!text.isEmpty()) {
         return text;
       } else {
         System.out.println("Error: Este campo no puede estar vacío");
-      }
-    }
-  }
-
-  // 4. Validación para IDs existentes
-  public static int validateExistingId(Scanner input, String message, ArrayList<Product> products) {
-    while (true) {
-      try {
-        System.out.print(message);
-        int id = input.nextInt();
-        input.nextLine();
-
-        // Verificar si el ID existe en la lista
-        boolean idExists = products.stream().anyMatch(p -> p.id == id);
-        if (idExists) {
-          return id;
-        } else {
-          System.out.println("Error: ID no encontrado en el inventario");
-        }
-
-      } catch (InputMismatchException e) {
-        System.out.println(" Error: Debe ingresar un número de ID válido");
-        input.nextLine();
       }
     }
   }
