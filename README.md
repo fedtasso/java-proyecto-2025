@@ -1,6 +1,6 @@
 # ⚠️ CRUD Pendiente de Completar.
 
-**Fecha estimada de finalización: Este fin de semana**
+**Fecha estimada de finalización: 26/10/25**  
 
 
 
