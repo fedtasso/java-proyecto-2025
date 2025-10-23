@@ -41,11 +41,12 @@ public class Main {
           simulatedId += 1;
         }
         case 4 -> updateProduct(productInventory, input);
-//        case 5 -> deleteProduct(productInventory);
-//        case 0 -> {
-//          exitApplication();
-//          break label;
-//        } // TODO ver como implementar
+        case 5 -> deleteProduct(productInventory, input);
+        case 0 -> {
+          Utilities.exitApplication();
+          input.close();
+          break label;
+        }
       }
     }
   }
@@ -54,12 +55,14 @@ public class Main {
   public static void displayAllProducts(ArrayList<Product> productInventory, Scanner input) {
     String title = "Todos los Productos";
     Utilities.displayProducts(productInventory, input, title);
+    Utilities.pause(input);
   }
 
   public static void searchProductByName(ArrayList<Product> products, Scanner input) {
     ArrayList<Product> foundProducts = Utilities.searchProductsByName(products, input);
     String title = "Resultado de la búsqueda";
     Utilities.displayProducts(foundProducts, input, title);
+    Utilities.pause(input);
   }
 
   public static void createNewProduct(int id, ArrayList<Product> products, Scanner input) {
@@ -77,7 +80,6 @@ public class Main {
   public static void updateProduct(ArrayList<Product> products, Scanner input) {
 
     ArrayList<Product> foundProducts = Utilities.searchProductsByName(products, input);
-
     if (foundProducts.isEmpty()) {
       System.out.println("No se encontró producto para editar.");
       Utilities.pause(input);
@@ -85,8 +87,37 @@ public class Main {
     }
     Product product = foundProducts.get(0);
     ProductService.editProductMenu(product, input);
+  }
 
+  public static void deleteProduct(ArrayList<Product> products, Scanner input) {
+    System.out.println("=== ELIMINAR PRODUCTO ===");
 
+    ArrayList<Product> foundProducts = Utilities.searchProductsByName(products, input);
+
+    if (foundProducts.isEmpty()) {
+      System.out.println("No se encontró producto para eliminar.");
+      Utilities.pause(input);
+      return;
+    }
+
+    Product product = foundProducts.get(0);
+    Utilities.displayProducts(product, input, "PRODUCTO A ELIMINAR");
+
+    // Confirmación de eliminación
+    System.out.print("¿Está seguro de que desea eliminar este producto? (s/n): ");
+    String confirmation = input.nextLine().trim().toLowerCase();
+
+    if (confirmation.equals("s") || confirmation.equals("si")) {
+      products.remove(product);
+      System.out.println("""
+          --------------------------------------
+          ¡Producto eliminado correctamente!
+          --------------------------------------""");
+    } else {
+      System.out.println("Eliminación cancelada.");
+    }
+
+    Utilities.pause(input);
   }
 
 }

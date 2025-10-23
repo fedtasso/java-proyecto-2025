@@ -19,7 +19,6 @@ public class Utilities {
 
     System.out.println("---------------------------------------");
     System.out.println();
-    pause(input);
   }
 
   public static void displayProducts(Product product, Scanner input, String title) {
@@ -35,7 +34,6 @@ public class Utilities {
     }
 
     System.out.println("---------------------------------------");
-    pause(input);
   }
 
   public static ArrayList<Product> searchProductsByName(ArrayList<Product> products,
@@ -72,5 +70,12 @@ public class Utilities {
     return text.trim().toLowerCase();
   }
 
+  public static void exitApplication() {
+    System.out.println("""
+        --------------------------------------
+        ¡Gracias por visitar Casa de Guitarras Clásicas!
+        --------------------------------------""");
+    System.out.println("Saliendo de la aplicación...");
+  }
 
 }

@@ -29,7 +29,7 @@ public class Validations {
     while (true) {
       try {
         System.out.print("Ingrese el precio del nuevo producto: ");
-        String inputText = input.nextLine().replace(",", ".");
+        String inputText = input.nextLine().replace(",", "."); //TODO validar que sea número
         double price = Double.parseDouble(inputText);
 
         if (price > 0) {
